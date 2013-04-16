@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}service{% endblock %}
+
+{% block content %}<div class="row col-wrap">
+							<div class="span8">
+								<h3>Our Services</h3>
+							{% if service_list %}
+								{% for Service in service_list %}
+								<div class="row collapse-group">
+									<div class="span8">
+									<h3>{{ Service.title }}</h3>
+									<p>{{ Service.intro }}</p>
+									{% if Service.paragraph_set.all %}
+										<p><a data-toggle="collapse" data-target="#service{{ Service.id }}">More  &raquo;</a></p>
+										<ul class="collapse" id="service{{ Service.id }}">
+										{% for Paragraph in Service.paragraph_set.all %}
+											<li><i class="icon-play"></i>  {{ Paragraph.paragraph }}</li>
+										{% endfor %}
+										</ul>
+									{% endif %}
+									</div>
+								</div>
+								{% endfor %}	
+							{% else %}
+								
+									<p>No services</p>
+								
+							{% endif %}
+							</div>	
+						{% include "sidebarsignup.html" %}
+				    </div>
+{% endblock %}

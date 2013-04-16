@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}price{% endblock %}
+
+{% block content %}<div class="row col-wrap">
+							<div class="span8">
+								<h3>Our Rates</h3>
+							{% if basic_list %}
+								{% for SimplePrice in basic_list %}
+										
+										<div class="row">
+											<div class="span8">
+												<p>{{ SimplePrice.title }}: ${{ SimplePrice.price }}</p>
+											</div>
+										</div>
+								{% endfor %}
+								{% else %}
+								
+									<p>No Prices</p>
+								
+								{% endif %}
+								{% if package_list %}
+									<h3>Packages</h3>
+									{% for PackagePrice in package_list %}
+										
+										<div class="row">
+											<div class="span7 well">
+												<h4>{{ PackagePrice.title }}: ${{ PackagePrice.price }}</h4>
+												<p>{{ PackagePrice.description }}</p>
+												<p>{{ PackagePrice.service }}</p>	
+											</div>
+										</div>
+									{% endfor %}
+							{% else %}
+								
+									<p>No Prices</p>
+								
+							{% endif %}
+							</div>	
+						{% include "sidebarsignup.html" %}
+				    </div>
+{% endblock %}

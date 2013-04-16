@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}people{% endblock %}
+
+{% block content %}<div class="row col-wrap">
+							<div class="span8">
+							{% if people_list %}
+								{% for Person in people_list %}
+										
+										<div class="row">
+											<div class="span2">
+												{% if Person.img %}
+												<div class="thumbnail">
+													<img src={{ Person.img.url }} alt="" />
+												</div>
+												{% endif %}
+											</div>
+											
+											<div class="span6 collapse-group">
+												{% if Person.webaddress %}
+												<h4><a href={{ Person.webaddress }}>{{ Person.firstName }} {{ Person.lastName }}</a></h4>
+												{% else %}
+												<h4>{{ Person.firstName }} {{ Person.lastName }}</h4>
+												{% endif %}
+												<p>{{ Person.briefBio }}</p>
+												{% if Person.phone or Person.email %}
+													<p><a data-toggle="collapse" data-target="#contact{{ Person.id }}">Contact &raquo;</a></p>
+													<address class="collapse" id="contact{{ Person.id }}">
+													{% if Person.email %}<a href="mailto:{{ Person.email }}">{{ Person.email }}</a><br>{% endif %}	
+													{% if Person.phone %}<abbr title="Phone">P:</abbr>{{ Person.phone }}{% endif %}
+													</address>
+													
+												{% endif %}
+											</div>
+										</div>
+								{% endfor %}
+							{% else %}
+								
+									<p>No People</p>
+								
+							{% endif %}
+							</div>	
+						{% include "sidebarsignup.html" %}
+				    </div>
+{% endblock %}

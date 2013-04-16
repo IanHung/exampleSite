@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load staticfiles %}
+	<head>
+		<meta charset="utf-8">
+		<title>Tutoring Service :: {% block title %}{% endblock %}</title>
+		<meta name="viewport" content = "device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link rel = "stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+		<link rel = "stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-responsive.css' %}" />		
+		<link rel = "stylesheet" type="text/css" href="{% static 'TutoringSite/css/custom.css' %}"/>
+		<script type="text/javascript"
+   			src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+   		<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+	    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+	</head>
+	
+	<body>
+		<div id="wrap">
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					    	<span class="icon-bar"></span>
+	        				<span class="icon-bar"></span>
+	        				<span class="icon-bar"></span>
+						</a>
+						
+						<a class="brand" href={% url "home" %}>Tutoring Site</a>
+						
+						<div class="nav-collapse collapse nav-responsive-collapse">
+							<ul class="nav pull-right">
+								<li class="{% block navbarHome %}{% endblock %}"><a href={% url "home" %}>Home</a></li>
+								<li class="{% block navbarPrice %}{% endblock %}"><a href={% url "price" %}>Pricing</a></li>
+								<li class="{% block navbarServices %}{% endblock %}"><a href={% url "service" %}>Services</a></li>
+								<li class="{% block navbarPeople %}{% endblock %}"><a href={% url "people" %}>People</a></li>
+								<li class="{% block navbarContact %}{% endblock %}"><a href={% url "contact" %}>Contact Us</a></li>
+							</ul>		
+						</div>	
+					</div>	
+				</div>	
+			</div>	
+			<div class="container">
+				<div class="hero-unit">
+					<h1>Tutoring Service</h1>
+					<p class="lead">This Tutoring Service</p>
+				</div>
+			
+			{% block content %}{% endblock %}
+			</div>	
+			   <div id="push"></div>
+		</div>
+		<footer id="footer">
+			<div class="container">
+				<div class="row">
+				<p class="muted">&copy; 2013 Orange Company</p>
+				</div>
+			</div>	
+		</footer>
+	</body>	
+</html>	

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+		<div class="row">
+			<div class="span">
+				<p>If you have any questions please feel free to contact us:</p>
+			</div>
+		</div>
+		{% if locations_list %}
+		{% for Location in locations_list %}
+			<div class="row">
+				<div class="span3 offset1">
+					<address>
+						<strong>{{ Location.name }}</strong><br>
+						{{ Location.streetAddress}}<br>
+						{{ Location.city }}, {{ Location.province }} {% if Location.country %}, {{ Location.country }}{% endif %}<br>
+						{{ Location.postalCode }}<br>
+						{% if Location.phone %}<abbr title="Phone">P:</abbr>{{ Location.phone }}{% endif %}
+					</address>
+				</div>
+				{% if Location.map %}
+					<div class="span3">
+						<div class="thumbnail">
+							<img src={{ Location.map.url }} alt = "" />
+						</div>	
+					</div>	
+				{% endif %}
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>No Locations</p>
+	{% endif %}
+	{% if emails_list %}
+		{% for Email in emails_list %}
+			<div class="row">
+				<div class="span3 offset1">
+					<address>
+						<strong>{{ Email.name }}</strong><br>
+						<a href="mailto:{{ Email.email }}">{{ Email.email }}</a><br>
+						{% if Email.phone %}<abbr title="Phone">P:</abbr>{{ Email.phone }}{% endif %}
+					</address>
+				</div>
+			</div>	
+		{% endfor %}	
+	{% else %}
+	<p>No Emails</p>
+	{% endif %}		
+{% endblock %}
