@@ -2,7 +2,7 @@ import os
 
 PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 
-# Django settings for TutoringSite project.
+# Django settings for exampleSite project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -107,10 +107,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'TutoringSite.urls'
+ROOT_URLCONF = 'exampleSite.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'TutoringSite.wsgi.application'
+WSGI_APPLICATION = 'exampleSite.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
